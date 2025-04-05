@@ -2,7 +2,6 @@ import { useState } from "react";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { addExpense } from "../redux/action";
-// import { addExpense } from "../RTK/expenseSlice.js";
 
 function ExpenseForm() {
   const [des, setDes] = useState("");
@@ -20,6 +19,9 @@ function ExpenseForm() {
     console.log(des,amount,category)
     // dispatch((newExpense))
     dispatch(addExpense(newExpense));
+    setDes("")
+    setAmount("")
+    setCategory("other")
   };
   return (
     <form
@@ -27,7 +29,9 @@ function ExpenseForm() {
       className="bg-white p-6 rounded-lg shadow-md mt-20"
     >
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <input
+        <input 
+        value={des}
+
           onChange={(e) => setDes(e.target.value)}
           type="text"
           placeholder="Enter description"
@@ -35,6 +39,7 @@ function ExpenseForm() {
           required
         />
         <input
+        value={amount}
           onChange={(e) => setAmount(e.target.value)}
           type="number"
           placeholder="Enter amount"
@@ -42,6 +47,7 @@ function ExpenseForm() {
           required
         />
         <select
+        value={category}
           onChange={(e) => setCategory(e.target.value)}
           className="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         >

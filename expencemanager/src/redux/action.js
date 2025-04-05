@@ -1,4 +1,4 @@
-import { SET_BUDGET } from "./actionTypes";
+import { ADD_EXPENSE, SET_BUDGET } from "./actionTypes";
 
 export const setNewBudget = (amount) => ({
     type: SET_BUDGET,
